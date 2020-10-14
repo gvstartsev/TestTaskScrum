@@ -10,7 +10,7 @@ public class ProjectManager {
     private Long value;
 
     public String completionDataForTask(Task task) {
-        if (task.getReadinessLevel() == 100 || task.getReadinessLevel() > 100) {
+        if (task.getReadinessLevel() < 100) {
             value = System.currentTimeMillis() +
                     1 / TaskType. *
                             (100 - task.getReadinessLevel()) *
