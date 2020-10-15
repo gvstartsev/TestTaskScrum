@@ -6,17 +6,16 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class ProjectManager {
-    private LocalDateTime value;
+    private LocalDateTime calculatedCompleteTaskDateTime;
 
     public LocalDateTime completionDataForTask(Task task) {
+        long quantityTaskDays = (long) (1 / task.getTaskType().getMultiplier() *
+                (100 - task.getReadinessLevel()) *
+                (ChronoUnit.DAYS.between(LocalDateTime.now(), task.getCreateDateTime())) / task.getReadinessLevel());
         if (task.getReadinessLevel() < 100) {
-            value = LocalDateTime.now().plusDays(
-                    (long) (1 / task.getTaskType().getMultiplier() *
-                            (100 - task.getReadinessLevel()) *
-                            (ChronoUnit.DAYS.between(LocalDateTime.now(),
-                                    task.getCreateDateTime())) / task.getReadinessLevel()));
+            calculatedCompleteTaskDateTime = LocalDateTime.now().plusDays(quantityTaskDays);
         }
 
-        return value;
+        return calculatedCompleteTaskDateTime;
     }
 }
