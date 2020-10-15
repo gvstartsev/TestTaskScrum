@@ -1,8 +1,11 @@
 package ru.startsev.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Requirement {
+    List<Task> taskList = new ArrayList<>();
     private LocalDateTime createDateTime;
     private LocalDateTime endDateTime;
     private LocalDateTime startDateTime;
@@ -25,6 +28,14 @@ public class Requirement {
         this.responsiblePerson = responsiblePerson;
         this.readinessLevel = readinessLevel;
         this.project = project;
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
     }
 
     public LocalDateTime getCreateDateTime() {

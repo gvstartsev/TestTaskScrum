@@ -1,6 +1,8 @@
 package ru.startsev.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Project {
     private LocalDateTime createDateTime;
@@ -10,6 +12,26 @@ public class Project {
     private TaskType taskType;
     private String responsiblePerson;
     private Double readinessLevel;
+
+    List<Task> taskList = new ArrayList<>();
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = taskList;
+    }
+
+    public List<Requirement> getRequirementList() {
+        return requirementList;
+    }
+
+    public void setRequirementList(List<Requirement> requirementList) {
+        this.requirementList = requirementList;
+    }
+
+    List<Requirement> requirementList = new ArrayList<>();
 
     public Project() {
 
