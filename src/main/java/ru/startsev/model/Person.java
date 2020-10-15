@@ -5,6 +5,8 @@ public class Person {
     private String firstName;
     private String role;
 
+    public Person() {}
+
     public Person(String lastName, String firstName, String role) {
         this.lastName = lastName;
         this.firstName = firstName;

@@ -8,12 +8,14 @@ public class Task {
     private LocalDateTime startDateTime;
     private Status status;
     private TaskType taskType;
-    private String responsiblePerson;
+    private Person responsiblePerson;
     private Double readinessLevel;
     private Project project;
     private Requirement requirement;
 
-    public Task(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, String responsiblePerson, Double readinessLevel, Project project, Requirement requirement) {
+    public Task() {}
+
+    public Task(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, Person responsiblePerson, Double readinessLevel, Project project, Requirement requirement) {
         this.createDateTime = createDateTime;
         this.endDateTime = endDateTime;
         this.startDateTime = startDateTime;
@@ -65,11 +67,11 @@ public class Task {
         this.taskType = taskType;
     }
 
-    public String getResponsiblePerson() {
+    public Person getResponsiblePerson() {
         return responsiblePerson;
     }
 
-    public void setResponsiblePerson(String responsiblePerson) {
+    public void setResponsiblePerson(Person responsiblePerson) {
         this.responsiblePerson = responsiblePerson;
     }
 
