@@ -1,25 +1,22 @@
 package ru.startsev.service;
 
 import ru.startsev.model.Task;
-import ru.startsev.model.TaskType;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class ProjectManager {
-    private Long value;
+    private LocalDateTime value;
 
-    public String completionDataForTask(Task task) {
+    public LocalDateTime completionDataForTask(Task task) {
         if (task.getReadinessLevel() < 100) {
-            value = System.currentTimeMillis() +
-                    1 / TaskType. *
+            value = LocalDateTime.now().plusDays(
+                    (long) (1 / task.getTaskType().getMultiplier() *
                             (100 - task.getReadinessLevel()) *
-                            (System.currentTimeMillis() -
-                                    task.getCreateDateTime());
+                            (ChronoUnit.DAYS.between(LocalDateTime.now(),
+                                    task.getCreateDateTime())) / task.getReadinessLevel()));
         }
-        long itemLong = value * 1000;
-        Date itemDate = new Date(itemLong);
-        String itemDateStr = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(itemDate);
-        return itemDateStr;
+
+        return value;
     }
 }

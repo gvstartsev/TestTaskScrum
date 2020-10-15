@@ -7,6 +7,10 @@ public enum TaskType {
 
     double multiplier;
 
+    public double getMultiplier() {
+        return multiplier;
+    }
+
     TaskType(double multiplier) {
         this.multiplier = multiplier;
     }
