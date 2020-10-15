@@ -15,7 +15,7 @@ public class ProjectManager {
         if (task.getReadinessLevel() < 100) {
             calculatedCompleteTaskDateTime = LocalDateTime.now().plusDays(quantityTaskDays);
         }
-        else calculatedCompleteTaskDateTime = LocalDateTime.now();
+        else calculatedCompleteTaskDateTime = task.getEndDateTime();
         return calculatedCompleteTaskDateTime;
     }
 }
