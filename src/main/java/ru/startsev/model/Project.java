@@ -11,7 +11,9 @@ public class Project {
     private String responsiblePerson;
     private Double readinessLevel;
 
-    Project() {}
+    public Project() {
+
+    }
 
     public Project(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, String responsiblePerson, Double readinessLevel) {
         this.createDateTime = createDateTime;

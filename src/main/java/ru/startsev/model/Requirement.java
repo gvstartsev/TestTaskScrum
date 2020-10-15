@@ -12,7 +12,9 @@ public class Requirement {
     private Double readinessLevel;
     private Project project;
 
-    Requirement() {}
+    public Requirement() {
+
+    }
 
     public Requirement(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, String responsiblePerson, Double readinessLevel, Project project) {
         this.createDateTime = createDateTime;

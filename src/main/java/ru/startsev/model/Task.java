@@ -13,7 +13,9 @@ public class Task {
     private Project project;
     private Requirement requirement;
 
-    public Task() {}
+    public Task() {
+
+    }
 
     public Task(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, Person responsiblePerson, Double readinessLevel, Project project, Requirement requirement) {
         this.createDateTime = createDateTime;
