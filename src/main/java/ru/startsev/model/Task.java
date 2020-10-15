@@ -1,15 +1,19 @@
 package ru.startsev.model;
 
+import java.time.LocalDateTime;
+
 public class Task {
-    private Long createDateTime;
-    private Long endDateTime;
-    private Long startDateTime;
+    private LocalDateTime createDateTime;
+    private LocalDateTime endDateTime;
+    private LocalDateTime startDateTime;
     private Status status;
     private TaskType taskType;
     private String responsiblePerson;
     private Double readinessLevel;
+    private Project project;
+    private Requirement requirement;
 
-    public Task(Long createDateTime, Long endDateTime, Long startDateTime, Status status, TaskType taskType, String responsiblePerson, Double readinessLevel) {
+    public Task(LocalDateTime createDateTime, LocalDateTime endDateTime, LocalDateTime startDateTime, Status status, TaskType taskType, String responsiblePerson, Double readinessLevel, Project project, Requirement requirement) {
         this.createDateTime = createDateTime;
         this.endDateTime = endDateTime;
         this.startDateTime = startDateTime;
@@ -17,29 +21,31 @@ public class Task {
         this.taskType = taskType;
         this.responsiblePerson = responsiblePerson;
         this.readinessLevel = readinessLevel;
+        this.project = project;
+        this.requirement = requirement;
     }
 
-    public Long getCreateDateTime() {
+    public LocalDateTime getCreateDateTime() {
         return createDateTime;
     }
 
-    public void setCreateDateTime(Long createDateTime) {
+    public void setCreateDateTime(LocalDateTime createDateTime) {
         this.createDateTime = createDateTime;
     }
 
-    public Long getEndDateTime() {
+    public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
-    public void setEndDateTime(Long endDateTime) {
+    public void setEndDateTime(LocalDateTime endDateTime) {
         this.endDateTime = endDateTime;
     }
 
-    public Long getStartDateTime() {
+    public LocalDateTime getStartDateTime() {
         return startDateTime;
     }
 
-    public void setStartDateTime(Long startDateTime) {
+    public void setStartDateTime(LocalDateTime startDateTime) {
         this.startDateTime = startDateTime;
     }
 
@@ -73,5 +79,21 @@ public class Task {
 
     public void setReadinessLevel(Double readinessLevel) {
         this.readinessLevel = readinessLevel;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Requirement getRequirement() {
+        return requirement;
+    }
+
+    public void setRequirement(Requirement requirement) {
+        this.requirement = requirement;
     }
 }
