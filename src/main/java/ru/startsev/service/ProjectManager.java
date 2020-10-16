@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class ProjectManager {
-    public LocalDateTime completionDateForTask(Task task) {
+    public LocalDateTime getCompletionDateForTask(Task task) {
         LocalDateTime calculatedCompleteTaskDateTime;
         long daysBetween = ChronoUnit.DAYS.between(LocalDateTime.now(), task.getCreateDateTime());
         long quantityTaskDays = (long) (1 / task.getTaskType().getMultiplier() *
@@ -22,31 +22,31 @@ public class ProjectManager {
         return calculatedCompleteTaskDateTime;
     }
 
-    public LocalDateTime completionDateTimeForRequirement(Requirement requirement) {
+    public LocalDateTime getCompletionDateTimeForRequirement(Requirement requirement) {
         LocalDateTime calculatedCompleteRequirementDateTime = LocalDateTime.now();
         for (Task task : requirement.getTaskList()) {
-            if (completionDateForTask(task).getNano() > calculatedCompleteRequirementDateTime.getNano()) {
-                calculatedCompleteRequirementDateTime = completionDateForTask(task);
+            if (getCompletionDateForTask(task).getNano() > calculatedCompleteRequirementDateTime.getNano()) {
+                calculatedCompleteRequirementDateTime = getCompletionDateForTask(task);
             }
         }
         return calculatedCompleteRequirementDateTime;
     }
 
-    public LocalDateTime completionDateTimeForProject(Project project) {
+    public LocalDateTime getCompletionDateTimeForProject(Project project) {
         LocalDateTime calculatedCompleteProjectDateTime = LocalDateTime.now();
         for (Requirement requirement : project.getRequirementList()) {
-            if (completionDateTimeForRequirement(requirement).getNano() > calculatedCompleteProjectDateTime.getNano()) {
-                calculatedCompleteProjectDateTime = completionDateTimeForRequirement(requirement);
+            if (getCompletionDateTimeForRequirement(requirement).getNano() > calculatedCompleteProjectDateTime.getNano()) {
+                calculatedCompleteProjectDateTime = getCompletionDateTimeForRequirement(requirement);
             }
         }
         return calculatedCompleteProjectDateTime;
     }
 
-    public LocalDateTime completionDateTimeForAllProjects(ProjectList projects) {
+    public LocalDateTime getCompletionDateTimeForAllProjects(ProjectService projects) {
         LocalDateTime calculatedCompleteAllProjectsDateTime = LocalDateTime.now();
-        for (Project project : projects.projects) {
-            if (completionDateTimeForProject(project).getNano() > calculatedCompleteAllProjectsDateTime.getNano()) {
-                calculatedCompleteAllProjectsDateTime = completionDateTimeForProject(project);
+        for (Project project : projects.findAll()) {
+            if (getCompletionDateTimeForProject(project).getNano() > calculatedCompleteAllProjectsDateTime.getNano()) {
+                calculatedCompleteAllProjectsDateTime = getCompletionDateTimeForProject(project);
             }
         }
         return calculatedCompleteAllProjectsDateTime;
